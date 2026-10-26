@@ -195,7 +195,46 @@ $vacio = null;
                 Mes: <?= $nombreMes ?> | Estación: <?= $estacion ?>
             </p>
         </section>
+        <section>
+            <h2>Ejercicio 5: Caja de la tienda</h2>
+            <?php
+            const ITBMS = 0.07;
 
+            // 1. Porcentaje de descuento por monto (orden de mayor a menor)
+            if ($monto >= 150) {
+                $pct = 15;
+            } elseif ($monto >= 100) {
+                $pct = 10;
+            } elseif ($monto >= 50) {
+                $pct = 5;
+            } else {
+                $pct = 0;
+            }
+
+            // 2. Si es miembro, sumar 5 puntos porcentuales
+            if ($esMiembro) {
+                $pct += 5;
+            }
+
+            // 3. Calcular base
+            $base = $monto - ($monto * $pct / 100);
+
+            // 4. Recargo nocturno con operador ||
+            $esNocturno = ($hora >= 22 || $hora < 6);
+            if ($esNocturno) {
+                $base = $base * 1.03;
+            }
+            $textoNocturno = $esNocturno ? "Sí" : "No";
+
+            // 5. Calcular total con ITBMS
+            $total = $base + ($base * ITBMS);
+            ?>
+
+            <p id="ej5-monto">Monto de compra: B/. <?= number_format($monto, 2) ?></p>
+            <p id="ej5-descuento">Descuento aplicado: <?= $pct ?>%</p>
+            <p id="ej5-recargo">Recargo nocturno: <?= $textoNocturno ?></p>
+            <p id="ej5-total">Total a pagar: B/. <?= number_format($total, 2) ?></p>
+        </section>
     </main>
 
     <footer id="firma">
