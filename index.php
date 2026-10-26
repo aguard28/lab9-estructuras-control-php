@@ -40,6 +40,7 @@ $vacio = null;
 
     <main id="lab9-guardia">
         
+        <!-- EJERCICIO 0 -->
         <section>
             <h2>Ejercicio 0: Datos y Tipos</h2>
             <table id="ej0-tipos">
@@ -59,6 +60,7 @@ $vacio = null;
             </table>
         </section>
 
+        <!-- EJERCICIO 1 -->
         <section>
             <h2>Ejercicio 1: Boleto de cine</h2>
             <?php
@@ -93,6 +95,7 @@ $vacio = null;
             </p>
         </section>
 
+        <!-- EJERCICIO 2 -->
         <section>
             <h2>Ejercicio 2: Notas</h2>
             <?php
@@ -122,18 +125,48 @@ $vacio = null;
             </p>
         </section>
 
-    </main>
+        <!-- EJERCICIO 3 -->
+        <section>
+            <h2>Ejercicio 3: Día de la semana</h2>
+            <?php
+            // Primer switch: nombre del día
+            switch ($dia) {
+                case 1: $nombreDia = "Lunes"; break;
+                case 2: $nombreDia = "Martes"; break;
+                case 3: $nombreDia = "Miércoles"; break;
+                case 4: $nombreDia = "Jueves"; break;
+                case 5: $nombreDia = "Viernes"; break;
+                case 6: $nombreDia = "Sábado"; break;
+                case 7: $nombreDia = "Domingo"; break;
+                default: $nombreDia = "Desconocido";
+            }
 
-    <footer id="firma">
-        Lab 9 · <?= NOMBRE . " " . APELLIDO ?> · Semilla <?= SEMILLA ?>
-    </footer>
-</body>
-</html>     </p>
+            // Segundo switch: tipo de día (casos agrupados)
+            switch ($dia) {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                    $tipoDia = "Laboral";
+                    break;
+                case 6:
+                case 7:
+                    $tipoDia = "Fin de semana";
+                    break;
+                default:
+                    $tipoDia = "Desconocido";
+            }
+            ?>
+
+            <p id="ej3-res">
+                Día: <?= $nombreDia ?> | Tipo: <?= $tipoDia ?>
+            </p>
         </section>
 
     </main>
 
-    <!-- 0.7 Footer -->
+    <!-- FOOTER (Solo una vez, al final del main) -->
     <footer id="firma">
         Lab 9 · <?= NOMBRE . " " . APELLIDO ?> · Semilla <?= SEMILLA ?>
     </footer>
