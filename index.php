@@ -34,14 +34,15 @@ $vacio = null;
     </style>
 </head>
 <body>
+<header>
     <h1 style="color: #2c3e50;">Laboratorio 9 - Estructuras de Control</h1>
-
+</header>
     <p id="autor">Autor: <?= $nombreCompleto ?></p>
 
     <main id="lab9-guardia">
         
         <!-- EJERCICIO 0 -->
-        <section>
+        <section id="ej0">
             <h2>Ejercicio 0: Datos y Tipos</h2>
             <table id="ej0-tipos">
                 <thead>
@@ -61,7 +62,7 @@ $vacio = null;
         </section>
 
         <!-- EJERCICIO 1 -->
-        <section>
+        <section id="ej1">
             <h2>Ejercicio 1: Boleto de cine</h2>
             <?php
             const PRECIO_NINO = 3.00;
@@ -96,7 +97,7 @@ $vacio = null;
         </section>
 
         <!-- EJERCICIO 2 -->
-        <section>
+        <section id="ej2">
             <h2>Ejercicio 2: Notas</h2>
             <?php
             $promedio = ($nota1 + $nota2 + $nota3) / 3;
@@ -126,7 +127,7 @@ $vacio = null;
         </section>
 
         <!-- EJERCICIO 3 -->
-        <section>
+        <section id="ej3">
             <h2>Ejercicio 3: Día de la semana</h2>
             <?php
             switch ($dia) {
@@ -163,7 +164,7 @@ $vacio = null;
         </section>
 
         <!-- EJERCICIO 4 -->
-        <section>
+        <section id="ej4">
             <h2>Ejercicio 4: Mes y estación</h2>
             <?php
             // Primer match: nombre del mes
@@ -195,7 +196,7 @@ $vacio = null;
                 Mes: <?= $nombreMes ?> | Estación: <?= $estacion ?>
             </p>
         </section>
-        <section>
+        <section id="ej5">
             <h2>Ejercicio 5: Caja de la tienda</h2>
             <?php
             const ITBMS = 0.07;
