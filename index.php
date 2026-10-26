@@ -24,19 +24,24 @@ $vacio = null;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 0.3 Meta tag con la huella -->
     <meta name="lab9-huella" content="<?= $huella ?>">
     <title>Laboratorio 9 - Alvaro Guardia</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 50%; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    </style>
 </head>
 <body>
-    <!-- 0.4 Autor -->
+    <h1 style="color: #2c3e50;">Laboratorio 9 - Estructuras de Control</h1>
+
     <p id="autor">Autor: <?= $nombreCompleto ?></p>
 
-    <!-- 0.5 Main con id exacto -->
     <main id="lab9-guardia">
+        
         <section>
             <h2>Ejercicio 0: Datos y Tipos</h2>
-            <!-- 0.6 Tabla con id ej0-tipos y orden OBLIGATORIO -->
             <table id="ej0-tipos">
                 <thead>
                     <tr>
@@ -53,16 +58,15 @@ $vacio = null;
                 </tbody>
             </table>
         </section>
-                <section>
+
+        <section>
             <h2>Ejercicio 1: Boleto de cine</h2>
             <?php
-            // Constantes de precios
             const PRECIO_NINO = 3.00;
             const PRECIO_JOVEN = 4.50;
             const PRECIO_ADULTO = 7.00;
             const PRECIO_JUBILADO = 3.50;
 
-            // Determinar categoría y precio base
             if ($edad < 12) {
                 $categoria = "Niño";
                 $precio = PRECIO_NINO;
@@ -77,7 +81,6 @@ $vacio = null;
                 $precio = PRECIO_JUBILADO;
             }
 
-            // Lógica de miércoles
             $esMiercoles = ($dia == 3);
             $precioFinal = $esMiercoles ? $precio * 0.5 : $precio;
             $textoMiercoles = $esMiercoles ? "Sí" : "No";
@@ -89,6 +92,45 @@ $vacio = null;
                 Miércoles 50%: <?= $textoMiercoles ?>
             </p>
         </section>
+
+        <section>
+            <h2>Ejercicio 2: Notas</h2>
+            <?php
+            $promedio = ($nota1 + $nota2 + $nota3) / 3;
+
+            if ($promedio >= 90) {
+                $letra = "A";
+            } elseif ($promedio >= 80) {
+                $letra = "B";
+            } elseif ($promedio >= 70) {
+                $letra = "C";
+            } elseif ($promedio >= 60) {
+                $letra = "D";
+            } else {
+                $letra = "F";
+            }
+
+            $estado = ($promedio >= 70) ? "Aprobado" : "Reprobado";
+            $cuadroHonor = ($promedio >= 90 && $nota1 >= 80 && $nota2 >= 80 && $nota3 >= 80) ? "Sí" : "No";
+            ?>
+
+            <p id="ej2-res" class="resultado <?= $estado === 'Aprobado' ? 'ok' : 'error' ?>">
+                Promedio: <?= number_format($promedio, 2) ?> | 
+                Letra: <?= $letra ?> | 
+                Estado: <?= $estado ?> | 
+                Cuadro de honor: <?= $cuadroHonor ?>
+            </p>
+        </section>
+
+    </main>
+
+    <footer id="firma">
+        Lab 9 · <?= NOMBRE . " " . APELLIDO ?> · Semilla <?= SEMILLA ?>
+    </footer>
+</body>
+</html>     </p>
+        </section>
+
     </main>
 
     <!-- 0.7 Footer -->
