@@ -37,6 +37,7 @@ $vacio = null;
 <header>
     <h1 style="color: #2c3e50;">Laboratorio 9 - Estructuras de Control</h1>
 </header>
+
     <p id="autor">Autor: <?= $nombreCompleto ?></p>
 
     <main id="lab9-guardia">
@@ -167,7 +168,6 @@ $vacio = null;
         <section id="ej4">
             <h2>Ejercicio 4: Mes y estación</h2>
             <?php
-            // Primer match: nombre del mes
             $nombreMes = match ($mes) {
                 1 => "Enero",
                 2 => "Febrero",
@@ -184,7 +184,6 @@ $vacio = null;
                 default => "Desconocido"
             };
 
-            // Segundo match: estación en Panamá
             $estacion = match ($mes) {
                 12, 1, 2, 3, 4 => "Seca",
                 5, 6, 7, 8, 9, 10, 11 => "Lluviosa",
@@ -196,12 +195,14 @@ $vacio = null;
                 Mes: <?= $nombreMes ?> | Estación: <?= $estacion ?>
             </p>
         </section>
+
+        <!-- EJERCICIO 5 -->
         <section id="ej5">
             <h2>Ejercicio 5: Caja de la tienda</h2>
             <?php
             const ITBMS = 0.07;
 
-            // 1. Porcentaje de descuento por monto (orden de mayor a menor)
+            // 1. Porcentaje de descuento por monto
             if ($monto >= 150) {
                 $pct = 15;
             } elseif ($monto >= 100) {
@@ -214,18 +215,19 @@ $vacio = null;
 
             // 2. Si es miembro, sumar 5 puntos porcentuales
             if ($esMiembro) {
-                $pct += 5;
+                $pct = $pct + 5;
             }
 
             // 3. Calcular base
             $base = $monto - ($monto * $pct / 100);
 
-            // 4. Recargo nocturno con operador ||
-            $esNocturno = ($hora >= 22 || $hora < 6);
-            if ($esNocturno) {
+            // 4. Recargo nocturno (usando || directamente en el if)
+            if ($hora >= 22 || $hora < 6) {
                 $base = $base * 1.03;
+                $textoRecargo = "Sí";
+            } else {
+                $textoRecargo = "No";
             }
-            $textoNocturno = $esNocturno ? "Sí" : "No";
 
             // 5. Calcular total con ITBMS
             $total = $base + ($base * ITBMS);
@@ -233,9 +235,10 @@ $vacio = null;
 
             <p id="ej5-monto">Monto de compra: B/. <?= number_format($monto, 2) ?></p>
             <p id="ej5-descuento">Descuento aplicado: <?= $pct ?>%</p>
-            <p id="ej5-recargo">Recargo nocturno: <?= $textoNocturno ?></p>
+            <p id="ej5-recargo">Recargo nocturno: <?= $textoRecargo ?></p>
             <p id="ej5-total">Total a pagar: B/. <?= number_format($total, 2) ?></p>
         </section>
+
     </main>
 
     <footer id="firma">
