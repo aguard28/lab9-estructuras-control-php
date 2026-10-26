@@ -129,7 +129,6 @@ $vacio = null;
         <section>
             <h2>Ejercicio 3: Día de la semana</h2>
             <?php
-            // Primer switch: nombre del día
             switch ($dia) {
                 case 1: $nombreDia = "Lunes"; break;
                 case 2: $nombreDia = "Martes"; break;
@@ -141,7 +140,6 @@ $vacio = null;
                 default: $nombreDia = "Desconocido";
             }
 
-            // Segundo switch: tipo de día (casos agrupados)
             switch ($dia) {
                 case 1:
                 case 2:
@@ -164,9 +162,42 @@ $vacio = null;
             </p>
         </section>
 
+        <!-- EJERCICIO 4 -->
+        <section>
+            <h2>Ejercicio 4: Mes y estación</h2>
+            <?php
+            // Primer match: nombre del mes
+            $nombreMes = match ($mes) {
+                1 => "Enero",
+                2 => "Febrero",
+                3 => "Marzo",
+                4 => "Abril",
+                5 => "Mayo",
+                6 => "Junio",
+                7 => "Julio",
+                8 => "Agosto",
+                9 => "Septiembre",
+                10 => "Octubre",
+                11 => "Noviembre",
+                12 => "Diciembre",
+                default => "Desconocido"
+            };
+
+            // Segundo match: estación en Panamá
+            $estacion = match ($mes) {
+                12, 1, 2, 3, 4 => "Seca",
+                5, 6, 7, 8, 9, 10, 11 => "Lluviosa",
+                default => "Desconocida"
+            };
+            ?>
+
+            <p id="ej4-res">
+                Mes: <?= $nombreMes ?> | Estación: <?= $estacion ?>
+            </p>
+        </section>
+
     </main>
 
-    <!-- FOOTER (Solo una vez, al final del main) -->
     <footer id="firma">
         Lab 9 · <?= NOMBRE . " " . APELLIDO ?> · Semilla <?= SEMILLA ?>
     </footer>
