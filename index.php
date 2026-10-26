@@ -53,6 +53,42 @@ $vacio = null;
                 </tbody>
             </table>
         </section>
+                <section>
+            <h2>Ejercicio 1: Boleto de cine</h2>
+            <?php
+            // Constantes de precios
+            const PRECIO_NINO = 3.00;
+            const PRECIO_JOVEN = 4.50;
+            const PRECIO_ADULTO = 7.00;
+            const PRECIO_JUBILADO = 3.50;
+
+            // Determinar categoría y precio base
+            if ($edad < 12) {
+                $categoria = "Niño";
+                $precio = PRECIO_NINO;
+            } elseif ($edad <= 17) {
+                $categoria = "Joven";
+                $precio = PRECIO_JOVEN;
+            } elseif ($edad <= 59) {
+                $categoria = "Adulto";
+                $precio = PRECIO_ADULTO;
+            } else {
+                $categoria = "Jubilado";
+                $precio = PRECIO_JUBILADO;
+            }
+
+            // Lógica de miércoles
+            $esMiercoles = ($dia == 3);
+            $precioFinal = $esMiercoles ? $precio * 0.5 : $precio;
+            $textoMiercoles = $esMiercoles ? "Sí" : "No";
+            ?>
+            
+            <p id="ej1-res">
+                Categoría: <?= $categoria ?> | 
+                Precio final: B/. <?= number_format($precioFinal, 2) ?> | 
+                Miércoles 50%: <?= $textoMiercoles ?>
+            </p>
+        </section>
     </main>
 
     <!-- 0.7 Footer -->
